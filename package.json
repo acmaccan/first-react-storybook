@@ -79,7 +79,7 @@
     "chromatic": "^6.5.4",
     "copyfiles": "^2.4.1",
     "rimraf": "^4.4.1",
-    "semantic-release": "^21.0.1"
+    "semantic-release": "^18.0.0"
   },
   "plugins": [
     "@semantic-release/commit-analyzer",
