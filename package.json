@@ -1,7 +1,27 @@
 {
-  "name": "my-storybook",
+  "name": "octo-shiny-storybook",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "homepage": "https://github.com/acmaccan",
+  "repository": {
+    "url": "https://github.com/acmaccan/first-react-storybook",
+    "type": "git"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -17,11 +37,14 @@
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build": "build-storybook",
+    "build": "yarn clean && tsc && yarn copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=d72beb859f86",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +74,18 @@
     "@storybook/manager-webpack4": "^6.5.5",
     "@storybook/react": "^6.5.5",
     "@storybook/testing-library": "^0.0.11",
-    "babel-loader": "^8.2.5"
-  }
+    "babel-loader": "^8.2.5",
+    "chromatic": "^6.5.4",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^4.4.1",
+    "semantic-release": "^21.0.1"
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ]
 }
